@@ -1,0 +1,40 @@
+REPORTE DEL DATAFRAME
+============================================================
+Filas: 151288
+Columnas: 10
+Duplicados: 0
+
+Columnas y tipos:
+- author: str
+- body: str
+- created_utc: str
+- id: str
+- num_comments: int64
+- score: int64
+- subreddit: str
+- title: str
+- upvote_ratio: float64
+- url: str
+
+Valores nulos por columna:
+- author: 0
+- body: 1609
+- created_utc: 0
+- id: 0
+- num_comments: 0
+- score: 0
+- subreddit: 0
+- title: 0
+- upvote_ratio: 0
+- url: 0
+
+Estadísticas numéricas:
+       num_comments       score  upvote_ratio
+count    151288.000  151288.000    151288.000
+mean          6.816      17.477         0.940
+std          30.266     113.411         0.125
+min           0.000       0.000         0.050
+25%           1.000       1.000         0.950
+50%           2.000       2.000         1.000
+75%           5.000       6.000         1.000
+max        2944.000    6055.000         1.000
