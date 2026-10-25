@@ -14,8 +14,10 @@ class ManejadorJSON:
     lista en una clave, por ejemplo ``{"data": [...]}``; en ese caso se indica la
     clave con ``clave_registros`` o se detecta automáticamente.
 
-    Nota: los archivos JSON Lines (``.jsonl``, un objeto por línea) no se pueden
-    leer con ``json.load``.
+    Si el archivo es JSON Lines (``.jsonl``: un objeto por línea), ``json.load``
+    falla porque el archivo completo no es un único JSON. En ese caso la clase lo
+    lee línea por línea con ``json.loads`` y guarda la salida como una lista JSON
+    normal con ``json.dump``.
 
     Args:
         ruta: Ruta relativa del JSON original.
@@ -31,6 +33,7 @@ class ManejadorJSON:
         self.codificacion = codificacion
         self.contenido: Any = None            # JSON completo tal como se leyó
         self.registros: list[dict[str, Any]] = []
+        self.formato_origen: str | None = None  # "json" o "jsonl"
 
     # ------------------------------------------------------------------ #
     # Importar
@@ -43,11 +46,17 @@ class ManejadorJSON:
         with open(self.ruta, "r", encoding=self.codificacion) as archivo:
             try:
                 self.contenido = json.load(archivo)
+                self.formato_origen = "json"
             except json.JSONDecodeError as error:
-                raise ValueError(
-                    f"No es un JSON válido ({error}). Si es JSON Lines (.jsonl), "
-                    "descarga un archivo .json que sea una lista de objetos."
-                ) from error
+                if "Extra data" not in str(error):
+                    raise ValueError(f"No es un JSON válido: {error}") from error
+                self.contenido = None
+
+        if self.contenido is None:
+            # JSON Lines: varios objetos JSON, uno por línea
+            with open(self.ruta, "r", encoding=self.codificacion) as archivo:
+                self.contenido = [json.loads(linea) for linea in archivo if linea.strip()]
+            self.formato_origen = "jsonl"
 
         if isinstance(self.contenido, list):
             self.registros = self.contenido
@@ -81,6 +90,7 @@ class ManejadorJSON:
         self._verificar_cargado()
         return {
             "archivo": str(self.ruta),
+            "formato_origen": self.formato_origen,
             "estructura": "lista" if self.clave_registros is None else f"objeto -> '{self.clave_registros}'",
             "registros": len(self.registros),
             "campos": self.campos(),
