@@ -4,6 +4,8 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+from clases_po.generador_resumen_txt import GeneradorResumenTXT
+
 
 class ManejadorCSV:
     """Importa un CSV con ``csv.reader``, permite modificarlo y lo guarda con ``csv.writer``.
@@ -19,7 +21,7 @@ class ManejadorCSV:
     """
 
     def __init__(self, ruta: str | Path, delimitador: str = ",", codificacion: str = "utf-8") -> None:
-        self.ruta = Path(ruta)
+        self.ruta = Path("datos\originales\depression.csv")
         self.delimitador = delimitador
         self.codificacion = codificacion
         self.encabezados: list[str] = []

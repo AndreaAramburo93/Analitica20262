@@ -5,6 +5,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from clases_po.generador_resumen_txt import GeneradorResumenTXT
+
 
 class ManejadorJSON:
     """Importa un JSON con ``json.load``, permite modificarlo y lo guarda con ``json.dump``.
@@ -28,7 +30,7 @@ class ManejadorJSON:
     def __init__(
         self, ruta: str | Path, clave_registros: str | None = None, codificacion: str = "utf-8"
     ) -> None:
-        self.ruta = Path(ruta)
+        self.ruta = Path("datos\originales\aci_train.jsonl")
         self.clave_registros = clave_registros
         self.codificacion = codificacion
         self.contenido: Any = None            # JSON completo tal como se leyó
