@@ -1,0 +1,129 @@
+======================================================================
+RESUMEN DEL DATASET: solomonk/reddit_mental_health_posts (solo posts con body)
+Generado: 2026-10-24 21:05:09
+======================================================================
+
+1. DIMENSIONES
+--------------
+Filas:    87,078
+Columnas: 10
+Memoria aproximada: 101.60 MB
+
+2. COLUMNAS Y TIPOS DE DATOS
+----------------------------
+     columna    tipo  no_nulos  valores_unicos
+      author     str     87078           50750
+        body     str     87078           86607
+ created_utc     str     87078           86834
+          id     str     87078           87078
+num_comments   int64     87078             420
+       score   int64     87078             983
+   subreddit     str     87078               5
+       title     str     87078           83648
+upvote_ratio float64     87078              82
+         url     str     87078           87078
+
+3. VALORES NULOS Y VACÍOS
+-------------------------
+No hay valores nulos (NaN/None) en ninguna columna.
+
+Valores vacíos o de relleno (no cuentan como nulos, pero no tienen contenido útil):
+columna  cadenas_vacias  [removed]  [deleted]
+ author               0          0       3772
+
+4. FILAS DUPLICADAS
+-------------------
+Filas completamente duplicadas: 0
+
+5. ESTADÍSTICAS DESCRIPTIVAS (COLUMNAS NUMÉRICAS)
+-------------------------------------------------
+                 count  mean    std  min  25%  50%  75%      max
+num_comments 87,078.00  8.89  35.26 0.00 1.00 3.00 7.00 2,944.00
+score        87,078.00 22.92 134.10 0.00 2.00 3.00 8.00 6,055.00
+upvote_ratio 87,078.00  0.94   0.12 0.08 0.92 1.00 1.00     1.00
+
+6. COLUMNAS DE TEXTO (LONGITUD EN CARACTERES)
+---------------------------------------------
+    columna  min  media  mediana   max
+     author    3   12.6     12.0    20
+       body    1  958.7    658.0 39824
+created_utc   24   24.0     24.0    24
+         id    6    6.0      6.0     6
+      title    1   46.5     38.0   300
+        url   47   82.3     85.0   103
+
+7. VALORES MÁS FRECUENTES (COLUMNAS CATEGÓRICAS)
+------------------------------------------------
+
+> subreddit (5 valores distintos)
+            cantidad  porcentaje
+OCD            25646       29.45
+ADHD           20398       23.42
+depression     13884       15.94
+ptsd           13697       15.73
+aspergers      13453       15.45
+
+8. MUESTRA DE DATOS (primeras 5 filas)
+--------------------------------------
+(Textos recortados a 60 caracteres)
+
+Fila 1:
+   author: HotConversation1273
+   body: A few months ago I was accepted into this full time softw...
+   created_utc: 2021-12-22T18:32:56.000Z
+   id: rmbjwb
+   num_comments: 1
+   score: 1
+   subreddit: ADHD
+   title: I get extremely anxious if I’m not working 24/7
+   upvote_ratio: 1.0
+   url: https://www.reddit.com/r/ADHD/comments/rmbjwb/i_get_extre...
+
+Fila 2:
+   author: snorefestt
+   body: Hey guys, I was curious if anyone else has the same issue...
+   created_utc: 2021-12-22T18:24:25.000Z
+   id: rmbd1y
+   num_comments: 3
+   score: 5
+   subreddit: ADHD
+   title: I can't will myself to clean my own house, but feel incre...
+   upvote_ratio: 1.0
+   url: https://www.reddit.com/r/ADHD/comments/rmbd1y/i_cant_will...
+
+Fila 3:
+   author: etyf12
+   body:    i have 6 exams in the next 2 weeks one of them on mond...
+   created_utc: 2021-12-22T18:22:52.000Z
+   id: rmbbvu
+   num_comments: 1
+   score: 2
+   subreddit: ADHD
+   title: i need some help
+   upvote_ratio: 1.0
+   url: https://www.reddit.com/r/ADHD/comments/rmbbvu/i_need_some...
+
+Fila 4:
+   author: GetHairOrDieTryin
+   body: Is there anyone out there that is struggling with ADD/ADH...
+   created_utc: 2021-12-22T18:20:35.000Z
+   id: rmba1t
+   num_comments: 3
+   score: 2
+   subreddit: ADHD
+   title: Anyone up for a chat?
+   upvote_ratio: 1.0
+   url: https://www.reddit.com/r/ADHD/comments/rmba1t/anyone_up_f...
+
+Fila 5:
+   author: ZeroTransPat
+   body: Whenever I get hungry, I never eat because I don't know w...
+   created_utc: 2021-12-22T18:18:47.000Z
+   id: rmb8lm
+   num_comments: 2
+   score: 1
+   subreddit: ADHD
+   title: Figuring out what to eat sucks
+   upvote_ratio: 1.0
+   url: https://www.reddit.com/r/ADHD/comments/rmb8lm/figuring_ou...
+
