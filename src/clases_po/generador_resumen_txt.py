@@ -1,12 +1,14 @@
 """Genera un resumen.txt con los resultados reales de ManejadorCSV y ManejadorJSON."""
+#se importan las librerias necesarias 
 from __future__ import annotations
 
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-
+#generamos la clase especificada 
 class GeneradorResumenTXT:
+    #hablaos del contexto general en este caso 
     """Registra lo que hacen las clases ``ManejadorCSV`` y ``ManejadorJSON`` y escribe un resumen.
 
     Cómo funciona:
@@ -32,6 +34,7 @@ class GeneradorResumenTXT:
     METODOS_GUARDAR = {"guardar"}
     METODOS_MODIFICAR = {"actualizar_valor", "agregar_registro", "eliminar_registro", "eliminar_por_valor"}
 
+#defnimos las funciones para para cada us, aqui analizaremos CSV y JSON para el ejercico 
     def __init__(self, url_csv: str, url_json: str) -> None:
         self.url_csv = url_csv
         self.url_json = url_json
@@ -39,7 +42,7 @@ class GeneradorResumenTXT:
         self.eventos: list[dict[str, Any]] = []   # una entrada por cada método llamado
 
     # ------------------------------------------------------------------ #
-    # Registro de la ejecución
+    # Registro de la ejecución para ver desde el log que se ha manejado
     # ------------------------------------------------------------------ #
     def rastrear(self, manejador: Any) -> "_ManejadorRastreado":
         """Devuelve el mismo manejador, pero registrando cada método que se llame sobre él."""
@@ -68,7 +71,7 @@ class GeneradorResumenTXT:
         return resultado
 
     # ------------------------------------------------------------------ #
-    # Generar el archivo
+    # Generar el archivo - y lo guarda en la carpeta especifico
     # ------------------------------------------------------------------ #
     def generar(self, ruta_salida: str | Path = "resumen.txt") -> Path:
         """Escribe el resumen en ``ruta_salida`` y devuelve la ruta del archivo."""
@@ -203,7 +206,7 @@ class GeneradorResumenTXT:
         return lineas
 
     # ------------------------------------------------------------------ #
-    # Utilidades internas
+    # Utilidades internas - metodos usados para el ejercicio importar, modificar, y guardar 
     # ------------------------------------------------------------------ #
     def _tipo_metodo(self, metodo: str) -> str:
         if metodo in self.METODOS_IMPORTAR:
